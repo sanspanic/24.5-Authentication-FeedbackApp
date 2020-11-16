@@ -1,0 +1,11 @@
+  {{form.hidden_tag()}}
+
+    {% for field in form.errors %}
+    <div class="alert alert-danger">{{ field }}:
+        <ul>
+        {% for error in form.errors[field] %}
+        <li>{{ error }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+    {% endfor %}
