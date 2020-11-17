@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField
+from wtforms import StringField, PasswordField, TextField, TextAreaField
 from wtforms.validators import InputRequired, Email, Length
-
+from wtforms.widgets import TextArea
 
 class RegisterForm(FlaskForm):
     username = StringField("Username", 
@@ -25,3 +25,15 @@ class LoginForm(FlaskForm):
 
     password = PasswordField("Password", 
                             validators=[InputRequired()])
+
+class FeedbackForm(FlaskForm): 
+
+    title = StringField("Title", 
+                            validators=[InputRequired(), Length(max=100)])
+
+    content = TextAreaField("Content", 
+                            validators=[InputRequired()])
+
+class DeleteForm(FlaskForm): 
+    """intentionally blank"""
+    

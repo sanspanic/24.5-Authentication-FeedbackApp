@@ -1,4 +1,4 @@
-from models import User, db
+from models import User, Feedback, db
 from app import app
 
 def drop_everything():
@@ -56,6 +56,16 @@ pig = User.register('pig', 'oink', 'pig@oink.com', 'Pig', 'Oink')
 #add new objects to session, so they persist & commit
 db.session.add_all([cat, dog, pig])
 db.session.commit()
+
+f1 = Feedback(title='Meow', content='Meow meow meow meoooow', username='cat')
+f2 = Feedback(title='Meow meow', content='Meow meow meow meoooow', username='cat')
+f3 = Feedback(title='Meow meow meow', content='Meow meow meow meoooow, and also meow', username='cat')
+f4 = Feedback(title='Woof', content='Woof woof woof', username='dog')
+f5 = Feedback(title='Oink', content='Oinky oink oink oink oink.', username='pig')
+
+db.session.add_all([f1, f2, f3, f4, f5])
+db.session.commit()
+
 
 
 
